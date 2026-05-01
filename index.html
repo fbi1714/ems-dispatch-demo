@@ -3,9 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><style>@media (prefers-reduced-motion: no-preference){text{transform-origin:50%25 55%25;animation:r 1.5s linear infinite}}@keyframes r{to{transform:rotate(360deg)}}</style><text y=%22.9em%22 font-size=%2290%22>🚨</text></svg>">
-<title>EMS Dispatch System</title>
+<link id="favicon" rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚨</text></svg>"><title>EMS Dispatch System</title>
 <style>
+
+<script>
+(function(){
+  const link = document.getElementById('favicon');
+  const canvas = document.createElement('canvas');
+  canvas.width = 64; canvas.height = 64;
+  const ctx = canvas.getContext('2d');
+  let angle = 0;
+  function tick(){
+    ctx.clearRect(0, 0, 64, 64);
+    ctx.save();
+    ctx.translate(32, 32);
+    ctx.rotate(angle);
+    ctx.font = '52px serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('🚨', 0, 2);
+    ctx.restore();
+    link.href = canvas.toDataURL('image/png');
+    angle += 0.15;
+    if (angle > Math.PI * 2) angle -= Math.PI * 2;
+  }
+  setInterval(tick, 80);
+})();
+</script>
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --navy:#0f1f2e;--navy-mid:#1a3048;--navy-lt:#254060;
